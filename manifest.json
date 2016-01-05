@@ -1,0 +1,26 @@
+{
+  "manifest_version": 2,
+  "name": "Yet another XKCD substitutions chome extension",
+  "description": "Making everyday browsing a bit more fun",
+  "version": "1.0",
+  "browser_action": {
+    "default_icon": "/img/icon.png",
+    "default_title": "XKCD Substitutions"
+  },
+  "background": {
+    "scripts": ["/js/background.js"]
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "run_at": "document_idle",
+      "js": ["/js/substitutions.js"]
+    }
+  ],
+  "permissions": [
+    "activeTab",
+    "storage",
+    "background",
+    "https://ajax.googleapis.com/"
+  ]
+}
