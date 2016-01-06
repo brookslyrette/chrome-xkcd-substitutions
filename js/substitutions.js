@@ -46,7 +46,9 @@ var substitutions = [
     ["Front runner", "Blade runner"],
     ["Global", "Spherical"],
     ["Minutes", "Years"],
+    ["Minute", "Year"],
     ["Years", "Minutes"],
+    ["Year", "Minute"],
     ["No indication", "Lots of signs"],
     ["Urged restraint by", "Drunkenly egged on"],
     ["Horsepower", "Tons of horsemeat"]
@@ -61,16 +63,28 @@ var walker = document.createTreeWalker(
 );
 
 // xkcd the current page!
+// Why two steps?
+// 1625 defines "Minutes" -> "Years" and "Years" -> "Minutes" so updating and replaing one at a time
+// will cause  Minutes to map to Years then get picked up again as a match.
 function makeItBetter() {
     var node;
     while(node = walker.nextNode()) {
-        for (var substitution of substitutions) {
+        //first flag what we will replace
+        for (var i = 0; i < substitutions.length; i++) {
+            var substitution = substitutions[i];
             // As is cases in the substitutions array.
-            node.nodeValue = node.nodeValue.replace(new RegExp(substitution[0]), substitution[1]);
+            node.nodeValue = node.nodeValue.replace(new RegExp(substitution[0]), '{' + i + '}');
             // Lower case versions
-            node.nodeValue = node.nodeValue.replace(new RegExp(substitution[0].toLowerCase()), substitution[1].toLowerCase());
+            node.nodeValue = node.nodeValue.replace(new RegExp(substitution[0].toLowerCase()), '{' + i + 'l}');
             // All caps [cruise control for awesome] versions
-            node.nodeValue = node.nodeValue.replace(new RegExp(substitution[0].toUpperCase()), substitution[1].toUpperCase());
+            node.nodeValue = node.nodeValue.replace(new RegExp(substitution[0].toUpperCase()), '{' + i + 'c}');
+        }
+        // replace the flaged items
+        for (var i = 0; i < substitutions.length; i++) {
+            var substitution = substitutions[i];
+            node.nodeValue = node.nodeValue.replace(new RegExp('\\{' + i + '\\}'), substitution[1]);
+            node.nodeValue = node.nodeValue.replace(new RegExp('\\{' + i + '\\l}'), substitution[1].toLowerCase());
+            node.nodeValue = node.nodeValue.replace(new RegExp('\\{' + i + '\\c}'), substitution[1].toUpperCase());
         }
     }
 }
