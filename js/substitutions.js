@@ -51,7 +51,30 @@ var substitutions = [
     ["Year", "Minute"],
     ["No indication", "Lots of signs"],
     ["Urged restraint by", "Drunkenly egged on"],
-    ["Horsepower", "Tons of horsemeat"]
+    ["Horsepower", "Tons of horsemeat"],
+    // Substitutions 3: http://xkcd.com/1679/
+    ["Gaffe", "Magic spell"],
+    ["Ancient", "Haunted"],
+    ["Star-Studded","Blood-soaked"],
+    ["Remains to be seen", "Will never be known"],
+    ["Silver bullet", "Way to kill werewolves"],
+    ["Subway system", "Tunnels I found"],
+    ["Surprising", "Surprising (but not to me)"],
+    ["War of words", "Interplanetary war"],
+    ["Tension", "Sexual tension"],
+    ["Cautiously optimistic", "Delusional"],
+    ["Doctor Who", "The Big Bang Theory"],
+    ["Win votes", "Find Pokémon"],
+    ["Behind the headlines", "Beyond the grave"],
+    ["Email", "Poem"],
+    ["Facebook Post", "Poem"],
+    ["Tweet", "Poem"],
+    ["Facebook CEO", "This guy"],
+    ["Latest", "Final"],
+    ["Disrupt", "Destroy"],
+    ["Meeting", "Ménage à trois"],
+    ["Scientists", "Channing Tatum and his friends"],
+    ["You won't believe", "I'm really sad about"]
 ];
 
 // create a walker that traverses all text nodes
