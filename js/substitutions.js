@@ -74,7 +74,9 @@ var substitutions = [
     ["Disrupt", "Destroy"],
     ["Meeting", "Ménage à trois"],
     ["Scientists", "Channing Tatum and his friends"],
-    ["You won't believe", "I'm really sad about"]
+    ["You won't believe", "I'm really sad about"],
+    // My Friend Catherine: http://xkcd.com/1689/
+    ["My cat", "My Friend Catherine"]
 ];
 
 // create a walker that traverses all text nodes
